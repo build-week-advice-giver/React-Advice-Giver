@@ -1,83 +1,140 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { newUser } from './actions'
+import axios from 'axios';
 
-class SignUp extends React.Component {
-    state = {
-      credentials: {
+export default class SignUp extends Component {
+
+    constructor(props) {
+        super(props);
+        this.onChangeHostName = this.onChangeHostName.bind(this);
+        this.onChangePort = this.onChangePort.bind(this);
+        this.onChangeAdv = this.onChangeAdv.bind(this);
+        this.onChangeExp = this.onChangeExp.bind(this);
+        this.onChangeYears = this.onChangeYears.bind(this);
+        this.onChangeAge = this.onChangeAge.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+
+        this.state = {
         username: '',
         password: '',
+        adviceGiver: false,
+        expertise: null,
+        yearsOfExperience: null,
+        age: null,
         email: '',
+
       }
     }
     
   
-    textInputChanged_field = (event) => {
-      this.setState({username: event.target.value});
-    }
-    
-    textInputChanged_field2 = (event) => {
-        this.setState({password: event.target.value});
-      }
+  onChangeHostName(e) {
+      this.setState({
+          username: e.target.value
+      });
+  }
+  onChangePort(e) {
+      this.setState({
+          password: e.target.value
+      });
+  }
+  
+  onChangeAdv(e) {
+    this.setState({
+        adviceGiver: e.target.value
+    });
+}
 
-    textInputChanged_field3 = (event) => {
-        this.setState({email: event.target.value});
-      }  
-    
-    handleSignup = (e) => {
+onChangeExp(e) {
+  this.setState({
+      expertise: e.target.value
+  });
+}
+
+onChangeYears(e) {
+  this.setState({
+      yearsOfExperience: e.target.value
+  });
+}
+
+onChangeAge(e) {
+  this.setState({
+      age: e.target.value
+  });
+}
+onChangeEmail(e) {
+  this.setState({
+      email: e.target.value
+  });
+}
+
+    onSubmit(e) {
         e.preventDefault();
-        console.log(this.state);
-        // this.props
-        //   .newUser(this.state.credentials)
-        //   .then(() => this.props.history.push("/auth"));
-    
+        const { username, password, adviceGiver,
+          expertise,
+          yearsOfExperience,
+          age,
+          email, } = this.state;
+        const token = localStorage.getItem('token');
+        console.log(this.state)
+        axios
+    .post('https://advice-giver.herokuapp.com/auth/register', { username, password, adviceGiver,
+    expertise,
+    yearsOfExperience,
+    age,
+    email, 
+    headers: {
+        Authorization: token } })
+    .then(res => localStorage.setItem("token", res.data.token))
+        
     }
     
     
     render() {
-      
-      
       return (
-        <div>
-          <form onSubmit={this.handleSignup}>
-          
-            
-            <div>
-              <input className='baseFont' type="text" placeholder='Username' onChange={this.textInputChanged_field} value={this.state.username}  />
-            
-            </div>
-            
-            <div className='elField2'>
-              <input className='baseFont'type="text" placeholder='Password' onChange={this.textInputChanged_field2} value={this.state.password}  />
-            
-            </div>
+          <div style={{marginTop: 50}}>
+              <h3>Login</h3>
+              <form>
+                  <div>
+                      <label>Userusername:</label>
+                      <input type="text" onChange={this.onChangeHostName}/>
+                  </div>
+                  <div>
+                      <label>Password: </label>
+                      <input type="text" onChange={this.onChangePort}/>
+                  </div>
 
-            <div className='elField2'>
-              <input className='baseFont'type="text" placeholder='Email' onChange={this.textInputChanged_field3} value={this.state.email}  />
-            
-            </div>
-            
-            
-            <div>
-              <button>Register</button>
-            
-            </div>
-            
-          
-         
-            </form>
-        </div>
+                  <div>
+                      <label>Advice Giver?: </label>
+                      <input type="text" onChange={this.onChangeAdv}/>
+                  </div>
+
+                  <div>
+                      <label>expertise: </label>
+                      <input type="text" onChange={this.onChangeExp}/>
+                  </div>
+
+                  <div>
+                      <label>yearsOfExperience: </label>
+                      <input type="number" onChange={this.onChangeYears}/>
+                  </div>
+
+                  <div>
+                      <label>age: </label>
+                      <input type="number" onChange={this.onChangeAge}/>
+                  </div>
+
+                  <div>
+                      <label>Email: </label>
+                      <input type="text" onChange={this.onChangeEmail}/>
+                  </div>
+                 
+                  <div className="form-group">
+                      <input onClick={this.onSubmit} type="submit" value="Login" />
+                  </div>
+              </form>
+          </div>
       )
-    }
-    
-  
   }
-
-  const mapStateToProps = state =>{
-    return{
-        smurfs: state.smurfs
-    }
 }
 
-  export default connect(
-    mapStateToProps, { newUser })(SignUp)
+  

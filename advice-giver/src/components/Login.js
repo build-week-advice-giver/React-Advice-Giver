@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class Create extends Component {
+export default class Login extends Component {
 
     constructor(props) {
         super(props);
@@ -10,13 +10,13 @@ export default class Create extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-        name: '',
+        username: '',
         password: '',
         }
     }
     onChangeHostName(e) {
         this.setState({
-            name: e.target.value
+            username: e.target.value
         });
     }
     onChangePort(e) {
@@ -27,14 +27,14 @@ export default class Create extends Component {
     
     onSubmit(e) {
         e.preventDefault();
-        const serverport = {
-            name: this.state.name,
-            password: this.state.password,
-        } = this.state
-        console.log(serverport)
+        const { username, password, } = this.state;
+        const token = localStorage.getItem('token');
+        console.log(this.state)
         axios
-    .post('https://advice-giver.herokuapp.com/auth/login', serverport)
-    .then(res => localStorage.setItem("token", res.data.payload))
+    .post('https://advice-giver.herokuapp.com/auth/login', { username, password, 
+    headers: {
+        Authorization: token } })
+    .then(res => localStorage.setItem("token", res.data.token))
         
     }
 
@@ -44,7 +44,7 @@ export default class Create extends Component {
                 <h3>Login</h3>
                 <form>
                     <div>
-                        <label>Username:</label>
+                        <label>Userusername:</label>
                         <input type="text" onChange={this.onChangeHostName}/>
                     </div>
                     <div>
@@ -107,7 +107,7 @@ export default class Create extends Component {
 //           <div className="layoutFlow" >
 //             <div className='elText'>
 //               <div className='baseFont' >
-//                 <div>Username</div>
+//                 <div>Userusername</div>
 //               </div>
             
 //             </div>
@@ -120,7 +120,7 @@ export default class Create extends Component {
 //             </div>
             
 //             <div className='elField'>
-//               <input className='baseFont' type="text" placeholder='Username' onChange={this.textInputChanged_field} value={this.state.field}  />
+//               <input className='baseFont' type="text" placeholder='Userusername' onChange={this.textInputChanged_field} value={this.state.field}  />
             
 //             </div>
             
