@@ -12,7 +12,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <h1>App.js Text</h1>
-        <Route path='/login' path='/' render={props => (<Login {...props} />)}/>
+        <Route path='/login' exact path='/' render={props => (<Login {...props} />)}/>
         <Route path='/signup' render={props => (<SignUp {...props} />)}/>
 
         <PrivateRoute exact path="/ask" component={AskPage}/>

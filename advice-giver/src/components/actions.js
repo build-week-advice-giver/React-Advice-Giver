@@ -45,11 +45,11 @@ export const newUser = (data) => dispatch => {
        })
     axios
       .post('https://advice-giver.herokuapp.com/auth/register', data)
-      .then(res => {
-        dispatch({ 
+      .then(({data})=> dispatch({ 
             type: NEW_USER, 
-            payload: res.data })
-      })
+            payload: data })
+      )
+
       .catch(err => {
         if (err.response.status === 403) {
           localStorage.removeItem('token')

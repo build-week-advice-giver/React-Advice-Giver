@@ -7,13 +7,17 @@ import {
   } from './actions'
 
 const initialState = {
-    friends: [],
-    error: '',
-    errorStatusCode: null,
-    fetchingData: false,
-    isLoggingIn: false,
-    newFriend: false,
-}
+        id: 1,                     
+        username: "",      
+        password: "",
+        email: "",
+        adviceGiver: false,
+        expertise: null,
+        yearsOfExperience: 10,
+        age: 30
+    
+    }
+
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
@@ -44,12 +48,11 @@ const reducer = (state = initialState, action) => {
                 errorStatusCode: action.payload.status
             }
         }
-        // case NEW_USER: {
-        //     return {
-        //         ...state,
-        //         errorStatusCode: action.payload.status
-        //     }
-        // }
+        case NEW_USER: {
+            return {
+                ...state,
+            }
+        }
     //     case NEW_FRIEND:
     //     return { ...state, newFriend: true };
     //   case NEW_FRIEND_SUCCESS:
