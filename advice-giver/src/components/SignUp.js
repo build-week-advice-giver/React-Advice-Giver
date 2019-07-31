@@ -27,18 +27,18 @@ export default class SignUp extends Component {
     }
     
   
-  onChangeHostName(e) {
+onChangeHostName(e) {
       this.setState({
           username: e.target.value
       });
   }
-  onChangePort(e) {
+onChangePort(e) {
       this.setState({
           password: e.target.value
       });
   }
   
-  onChangeAdv(e) {
+onChangeAdv(e) {
     this.setState({
         adviceGiver: e.target.value
     });
@@ -46,19 +46,19 @@ export default class SignUp extends Component {
 
 onChangeExp(e) {
   this.setState({
-      expertise: e.target.value
+      expertise: null
   });
 }
 
 onChangeYears(e) {
   this.setState({
-      yearsOfExperience: e.target.value
+      yearsOfExperience: parseInt(e.target.value)
   });
 }
 
 onChangeAge(e) {
   this.setState({
-      age: e.target.value
+      age: parseInt(e.target.value)
   });
 }
 onChangeEmail(e) {
@@ -69,7 +69,9 @@ onChangeEmail(e) {
 
     onSubmit(e) {
         e.preventDefault();
-        const { username, password, adviceGiver,
+        const { username, 
+          password, 
+          adviceGiver,
           expertise,
           yearsOfExperience,
           age,
