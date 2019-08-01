@@ -18,15 +18,13 @@ export default class Create extends Component {
         axios.get('https://advice-giver.herokuapp.com/messages', {
             headers: { Authorization: localStorage.getItem('token') }})
   .then(function (response) {
-    console.log(response);
-  })
+    console.log(response.data);
+   }
+)
   .catch(function (error) {
     console.log(error);
-  })
-     this.setState = {
-         messages: {response.data}
-     }
-    }
+  })}
+     
 
     render() {
         return (
