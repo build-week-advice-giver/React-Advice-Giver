@@ -76,17 +76,19 @@ onChangeEmail(e) {
           yearsOfExperience,
           age,
           email, } = this.state;
-        const token = localStorage.getItem('token');
+        
         console.log(this.state)
-        axios
-    .post('https://advice-giver.herokuapp.com/auth/register', { username, password, adviceGiver,
-    expertise,
-    yearsOfExperience,
-    age,
-    email, 
-    headers: {
-        Authorization: token } })
-    .then(res => localStorage.setItem("token", res.data.token))
+        axios.post('https://advice-giver.herokuapp.com/auth/register', 
+          { 
+            username, 
+            password, 
+            adviceGiver,
+            expertise,
+            yearsOfExperience,
+            age,
+            email,  
+          } )
+    .then(res => )
         
     }
     
