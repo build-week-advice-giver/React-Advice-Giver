@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from "react-router-dom";
 
-export default class SignUp extends Component {
+class SignUp extends Component {
 
     constructor(props) {
         super(props);
@@ -88,11 +89,9 @@ onChangeEmail(e) {
             age,
             email,  
           } )
-    .then(res => )
-        
-    }
+    .then(() => {this.props.history.push("/")})
     
-    
+        }
     render() {
       return (
           <div style={{marginTop: 50}}>
@@ -140,5 +139,4 @@ onChangeEmail(e) {
       )
   }
 }
-
-  
+  export default withRouter(SignUp);
