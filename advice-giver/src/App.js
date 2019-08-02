@@ -6,6 +6,7 @@ import PrivateRoute from './components/PrivateRoute'
 import AnswerPage from './components/AnswerPage'
 import AskPage from './components/AskPage'
 import SignUp from './components/SignUp'
+import Landing from './components/Landing'
 
 
 
@@ -15,8 +16,9 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>App.js Text</h1>
-        <Route path='/login' exact path='/' render={props => (<Login {...props} />)}/>
+        <h1>Advice Giver</h1>
+        <Route path='/' exact path='/' render={props => (<Landing {...props} />)}/>
+        <Route path='/login' render={props => (<Login {...props} />)}/>
         <Route path='/signup' render={props => (<SignUp {...props} />)}/>
 
         <PrivateRoute exact path="/ask" component={AskPage}/>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 
-export default class Create extends Component {
+export default class Answerpage extends Component {
 
     constructor(props) {
         super(props);
@@ -11,29 +11,37 @@ export default class Create extends Component {
         this.state = {messages: []};
     
     }
+    componentDidMount() {
+		this.gimme()
+    }
     
-    gimme(e) {
-        e.preventDefault();
-        axios.get('https://advice-giver.herokuapp.com/messages', {
+    gimme() {
+       axios.get('https://advice-giver.herokuapp.com/messages', {
             headers: { Authorization: localStorage.getItem('token') }})
             .then(response => {
                 this.setState({ messages: response.data });
               })
-   
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+    // answer(){
+    //     e.preventDefault();
+    //     const = {} =this.state;
+    //     axios.post('https://advice-giver.herokuapp.com/messages'), {
 
-  .catch(function (error) {
-    console.log(error);
-  })}
-     
+    //     }
+    // } 
 
     render() {
         return (
             <div>
-                <h3>Display?</h3>
-               <button onClick={this.gimme}>Load Messages</button>
-               <p>{this.state.messages.map((item, index) => (
-  <p key={index}>{item.message}</p>
-))}</p>
+                <h3>Questions!</h3>
+                <p>{this.state.messages.map((item, index) => (
+                    <p key={index}>{item.message}
+                    <input type='text' placeholder='Type your answer here!'></input>
+                    <button>Submit</button></p>
+                ))} </p>
                
 
                

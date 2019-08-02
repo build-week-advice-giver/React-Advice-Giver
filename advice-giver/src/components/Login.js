@@ -29,14 +29,22 @@ export default class Login extends Component {
         e.preventDefault();
         const { username, password, } = this.state;
         const token = localStorage.getItem('token');
+        const id = localStorage.getItem('id');
         console.log(this.state)
-        axios
-    .post('https://advice-giver.herokuapp.com/auth/login', { username, password, 
-    headers: {
-        Authorization: token } })
-    .then(res => localStorage.setItem("token", res.data.token))
-        
+
+        axios.post('https://advice-giver.herokuapp.com/auth/login',
+         { 
+            username, 
+            password, 
+            headers: {Authorization: token, Userid: id } })
+            
+            .then(res => {
+                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("id", res.data.id);          
+                }
+            )
     }
+
 
     render() {
         return (

@@ -95,7 +95,7 @@ onChangeEmail(e) {
     render() {
       return (
           <div style={{marginTop: 50}}>
-              <h3>Login</h3>
+              <h3>Sign Up</h3>
               <form>
                   <div>
                       <label>Userusername:</label>
