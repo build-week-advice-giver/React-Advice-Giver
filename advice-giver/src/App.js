@@ -17,12 +17,14 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <h1>Advice Giver</h1>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Route exact path='/' render={props => (<Landing {...props} />)}/>
         <Route path='/login' render={props => (<Login {...props} />)}/>
         <Route path='/signup' render={props => (<SignUp {...props} />)}/>
 
         <PrivateRoute exact path="/ask" component={AskPage}/>
         <PrivateRoute exact path="/answer" component={AnswerPage}/>
+        </BrowserRouter>
       </div>
     )
   }
