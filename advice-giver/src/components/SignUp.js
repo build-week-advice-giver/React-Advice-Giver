@@ -89,7 +89,7 @@ onChangeEmail(e) {
             age,
             email,  
           } )
-    .then(() => {this.props.history.push("/")})
+    .then(() => {this.props.history.push("/Login")})
     
         }
     render() {
