@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "gh-pages": "^2.0.1",
-    "homepage": "https://build-week-advice-giver.github.io/React-Advice-Giver/",
+    
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-private-route": "^1.1.2",
@@ -16,15 +16,15 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0"
   },
-  "homepage": "https://build-week-advice-giver.github.io/React-Advice-Giver/",
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
-    "homepage": "https://build-week-advice-giver.github.io/React-Advice-Giver/"
+    "deploy": "gh-pages -d build"
+    
   },
   "eslintConfig": {
     "extends": "react-app"
