@@ -17,7 +17,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <h1>Advice Giver</h1>
-        <Route path='/' exact path='/' render={props => (<Landing {...props} />)}/>
+        <Route exact path='/' render={props => (<Landing {...props} />)}/>
         <Route path='/login' render={props => (<Login {...props} />)}/>
         <Route path='/signup' render={props => (<SignUp {...props} />)}/>
 

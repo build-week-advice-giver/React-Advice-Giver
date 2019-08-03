@@ -8,7 +8,7 @@ import thunk from 'redux-thunk'
 import  reducer  from './components/reducers'
 import logger from 'redux-logger'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 // const logger = (store) => (next) => (action) =>{
 //     next(action)
