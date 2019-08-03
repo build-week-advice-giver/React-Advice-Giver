@@ -1,6 +1,6 @@
 import './App.css'
 import React from 'react'
-import { Route, HashRouter } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Login from './components/Login'
 import PrivateRoute from './components/PrivateRoute'
 import AnswerPage from './components/AnswerPage'
@@ -17,7 +17,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <h1>Advice Giver</h1>
-        <HashRouter exact path='/' render={props => (<Landing {...props} />)}/>
+        <Route exact path='/' render={props => (<Landing {...props} />)}/>
         <Route path='/login' render={props => (<Login {...props} />)}/>
         <Route path='/signup' render={props => (<SignUp {...props} />)}/>
 
